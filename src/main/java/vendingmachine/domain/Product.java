@@ -1,5 +1,7 @@
 package vendingmachine.domain;
 
+import java.util.Objects;
+
 public class Product {
     private static final int MINIMUM_MONEY_VALUE = 100;
     private static final int MINIMUM_MONEY_THRESHOLD = 10;
@@ -37,5 +39,22 @@ public class Product {
             throw new IllegalArgumentException(DomainErrorMessage.INVALID_BUY_QUANTITY.getMessage());
         }
         this.quantity -= buyQuantity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Product)) {
+            return false;
+        }
+        Product product = (Product) o;
+        return price == product.price && quantity == product.quantity && Objects.equals(name, product.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, price, quantity);
     }
 }
