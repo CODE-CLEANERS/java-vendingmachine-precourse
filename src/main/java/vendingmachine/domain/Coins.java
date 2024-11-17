@@ -37,4 +37,8 @@ public class Coins {
     public void removeAll(List<Coin> changes) {
         coinsForChanges.removeAll(changes);
     }
+
+    public List<Coin> getCoinsForChanges() {
+        return coinsForChanges;
+    }
 }

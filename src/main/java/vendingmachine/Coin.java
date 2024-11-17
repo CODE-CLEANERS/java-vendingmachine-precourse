@@ -48,4 +48,8 @@ public enum Coin {
     public int getAmount() {
         return amount;
     }
+
+    public String customToString(int quantity) {
+        return amount + "원 - " + quantity + "개";
+    }
 }

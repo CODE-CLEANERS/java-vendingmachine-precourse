@@ -10,7 +10,7 @@ public enum DomainErrorMessage {
 
     DUPLICATED_NAMES("상품 이름이 중복되었습니다.");
 
-    private static final String ERROR = "[ERROR]";
+    private static final String ERROR = "[ERROR] ";
     private final String message;
 
     DomainErrorMessage(String message) {

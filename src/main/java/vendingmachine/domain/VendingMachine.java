@@ -39,4 +39,8 @@ public class VendingMachine {
         coins.removeAll(changes);
         return changes;
     }
+
+    public String getCoinsString(){
+        return coins.toString();
+    }
 }
