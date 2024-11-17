@@ -17,9 +17,9 @@ class ProductsTest {
 
     @BeforeEach
     void setUp() {
-        Product one = new Product("name", 100, 1);
-        Product two = new Product("name", 200, 2);
-        Product three = new Product("name", 300, 3);
+        Product one = new Product("name1", 100, 1);
+        Product two = new Product("name2", 200, 2);
+        Product three = new Product("name3", 300, 3);
         ArrayList<Product> objects = new ArrayList<>();
         objects.add(one);
         objects.add(two);
@@ -51,6 +51,17 @@ class ProductsTest {
                 .hasMessage(DomainErrorMessage.EMPTY_STOCK.getMessage());
     }
 
+    @DisplayName("중복된 상품 이름이 입력되면 예외이다.")
+    @Test
+    void duplicatedNames() {
+        ArrayList<Product> empty = new ArrayList<>();
+        empty.add(new Product("name1", 100, 1));
+        empty.add(new Product("name1", 200, 2));
+        assertThatThrownBy(() -> new Products(empty))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(DomainErrorMessage.DUPLICATED_NAMES.getMessage());
+    }
+
     @DisplayName("'상품 최소 가격'을 도출 가능하다")
     @Test
     void getMinimalPrice() {
@@ -63,5 +74,12 @@ class ProductsTest {
     void getQuantitySum(){
         int quantitySum = products.getQuantitySum();
         Assertions.assertThat(quantitySum).isEqualTo(6);
+    }
+
+    @DisplayName("상품의 이름으로 가격을 불러 올 수 있다.")
+    @Test
+    void getPriceFrom() {
+        int amount = products.getPriceFrom("name1");
+        Assertions.assertThat(amount).isEqualTo(100);
     }
 }
