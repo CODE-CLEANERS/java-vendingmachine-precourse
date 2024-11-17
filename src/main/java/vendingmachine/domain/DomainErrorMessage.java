@@ -3,6 +3,7 @@ package vendingmachine.domain;
 public enum DomainErrorMessage {
     INVALID_MONEY("가격 형식이 부적절합니다."),
     INVALID_BUY_QUANTITY("구매하려는 수량이 재고 수량보다 많습니다."),
+    EMPTY_STOCK("상품 목록이 없습니다."),
 
     ;
 

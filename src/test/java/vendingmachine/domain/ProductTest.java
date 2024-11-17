@@ -10,7 +10,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class ProductTest {
-
     @DisplayName("초기화에 성공한다.")
     @Test
     void constructTest() {
