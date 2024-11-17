@@ -1,7 +1,6 @@
 package vendingmachine;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import vendingmachine.domain.DomainErrorMessage;
 
@@ -31,7 +30,7 @@ public enum Coin {
             money %= coin.amount;
             addCoins(coin, count, coins);
         }
-        return Collections.unmodifiableList(coins);
+        return coins;
     }
 
     private static void addCoins(Coin coin, int count, List<Coin> coins) {

@@ -43,4 +43,15 @@ class CoinsTest {
                 Coin.COIN_500, Coin.COIN_100, Coin.COIN_50, Coin.COIN_10
         );
     }
+
+    @DisplayName("사용된 코인은 리스트에서 제거된다.")
+    @Test
+    void removeAll() {
+        Coins coins = Coins.from(1320);
+        List<Coin> changes = coins.getChanges(660);
+        coins.removeAll(changes);
+        Assertions.assertThat(changes).containsExactly(
+                Coin.COIN_500, Coin.COIN_100, Coin.COIN_50, Coin.COIN_10
+        );
+    }
 }
